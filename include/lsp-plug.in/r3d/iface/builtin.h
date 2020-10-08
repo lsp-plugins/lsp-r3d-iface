@@ -67,7 +67,7 @@ namespace lsp
         #define LSP_R3D_BULTIN_FACTORY_FUNCTION \
             LSP_R3D_FACTORY_FUNCTION_HEADER(index) \
             { \
-                return Factory::enumerate(index) \
+                return Factory::enumerate(index); \
             }
 
     }
