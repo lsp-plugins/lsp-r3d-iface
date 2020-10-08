@@ -29,7 +29,7 @@ namespace lsp
     namespace r3d
     {
         /**
-         * This class allows to register built-in factory
+         * This class allows to automatically register built-in factory
          */
         class LSP_SYMBOL_HIDDEN Factory
         {
@@ -48,15 +48,28 @@ namespace lsp
 
             public:
                 static inline Factory      *list() { return pList;  }
+                static factory_t           *enumerate(int index);
+
                 inline Factory             *next() { return pNext;  }
         };
 
         /**
          * Macro for simplifying definition of factory export
          */
-        #define BUILTIN_FACTORY(symbol, factory)   \
+        #define LSP_R3D_BUILTIN_FACTORY(symbol, factory)   \
             LSP_SYMBOL_HIDDEN \
             ::lsp::r3d::Factory symbol(factory);
+
+        /**
+         * The implementation of factory function that uses builtin factory
+         * descriptor to enumerate all possible factories
+         */
+        #define LSP_R3D_BULTIN_FACTORY_FUNCTION \
+            LSP_R3D_FACTORY_FUNCTION_HEADER(index) \
+            { \
+                return Factory::enumerate(index) \
+            }
+
     }
 }
 

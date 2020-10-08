@@ -43,6 +43,23 @@ namespace lsp
             if (pList == this)
                 pList = NULL;
         }
+
+        factory_t *Factory::enumerate(int index)
+        {
+            if (index < 0)
+                return NULL;
+
+            // Lookup the corresponding item in the list
+            Factory *ptr = pList;
+            while ((index--) > 0)
+            {
+                if (ptr == NULL)
+                    break;
+                ptr     = ptr->next();
+            }
+
+            return (ptr != NULL) ? ptr->pFactory : NULL;
+        }
     }
 }
 
