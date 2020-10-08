@@ -33,6 +33,10 @@ namespace lsp
 {
     namespace r3d
     {
+        /**
+         * Factory for obtaining 3D rendering backend metadata and
+         * constructing 3D backend instance
+         */
         typedef struct factory_t
         {
             /**

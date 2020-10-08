@@ -31,11 +31,15 @@ namespace lsp
 {
     namespace r3d
     {
+        /**
+         * 3D renderning backend metadata
+         */
         typedef struct backend_metadata_t
         {
-            const char *id;             // Enumeration unique identifier
-            const char *display;        // Display name
-            const char *lc_key;         // Localized display name key
+            const char         *id;             // Enumeration unique identifier
+            const char         *display;        // Display name
+            const char         *lc_key;         // Localized display name key
+            window_handle_t     wnd_type;       // The actual type of the native window handle
         } backend_metadata_t;
 
         /**

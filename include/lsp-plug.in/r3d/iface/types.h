@@ -29,10 +29,15 @@ namespace lsp
 {
     namespace r3d
     {
+        /**
+         * The type of the actual window handle that backend operates on
+         */
         enum window_handle_t
         {
-            WND_HANDLE_X11,
-            WND_HANDLE_WINNT
+            WND_HANDLE_NONE,    //!< WND_HANDLE_NONE        Backend works in offscreen mode only (without any window subsystem in background) and does not provide init_window
+            WND_HANDLE_X11,     //!< WND_HANDLE_X11         X11 window subsystem
+            WND_HANDLE_WAYLAND, //!< WND_HANDLE_WAYLAND     Wayland window subsystem
+            WND_HANDLE_WINDOWS, //!< WND_HANDLE_WINDOWS     Windows subsystem
         };
 
         enum pixel_format_t

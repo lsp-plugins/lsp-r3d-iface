@@ -6,3 +6,4 @@
 * Initial release.
 * Split interface code from lsp-r3d-base-lib.
 * Added possibility to define built-in R3D factory.
+* Added compatibility with window subsystem flag.
