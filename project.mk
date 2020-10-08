@@ -24,7 +24,7 @@ ARTIFACT_DESC               = 3D rendering backend interfaces
 ARTIFACT_VARS               = LSP_R3D_GLX_LIB
 ARTIFACT_HEADERS            = lsp-plug.in
 ARTIFACT_EXPORT_ALL         = 0
-ARTIFACT_VERSION            = 0.5.0-devel
+ARTIFACT_VERSION            = 0.5.0
 
 # List of dependencies
 TEST_DEPENDENCIES = \
