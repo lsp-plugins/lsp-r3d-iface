@@ -135,6 +135,7 @@ namespace lsp
             size_t                  flags;      // Additional flags, see r3d_buffer_flags_t
             float                   width;      // Point size or line width
             size_t                  count;      // Number of elements in buffer
+            mat4_t                  model;      // Model matrix
 
             /* Vertices */
             struct {

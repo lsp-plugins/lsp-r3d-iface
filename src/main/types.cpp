@@ -32,6 +32,26 @@ namespace lsp
             buf->width              = 1.0f;
             buf->count              = 0;
 
+            buf->model[0]           = 1.0f;
+            buf->model[1]           = 0.0f;
+            buf->model[2]           = 0.0f;
+            buf->model[3]           = 0.0f;
+
+            buf->model[4]           = 0.0f;
+            buf->model[5]           = 1.0f;
+            buf->model[6]           = 0.0f;
+            buf->model[7]           = 0.0f;
+
+            buf->model[8]           = 0.0f;
+            buf->model[9]           = 0.0f;
+            buf->model[10]          = 1.0f;
+            buf->model[11]          = 0.0f;
+
+            buf->model[12]          = 0.0f;
+            buf->model[13]          = 0.0f;
+            buf->model[14]          = 0.0f;
+            buf->model[15]          = 1.0f;
+
             buf->vertex.data        = NULL;
             buf->vertex.stride      = 0;
             buf->vertex.index       = NULL;
