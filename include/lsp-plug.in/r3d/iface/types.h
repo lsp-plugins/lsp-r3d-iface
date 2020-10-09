@@ -139,27 +139,27 @@ namespace lsp
             struct {
                 const dot4_t       *data;       // Vertex data
                 size_t              stride;     // Stride between two vertices
-                const uint32_t     *indices;    // Vertex indices to use for drawing instead of plain vertex data
+                const uint32_t     *index;      // Vertex indices to use for drawing instead of plain vertex data
             } vertex;
 
             /* Normals  */
             struct {
                 const vec4_t       *data;       // Normal data
                 size_t              stride;     // Stride between two normals
-                const uint32_t     *indices;    // Vertex indices to use for drawing instead of plain vertex data
+                const uint32_t     *index;      // Vertex indices to use for drawing instead of plain vertex data
             } normal;
 
             /* Colors */
             struct {
                 const color_t      *data;       // Color data
                 size_t              stride;     // Stride between two colors
-                const uint32_t     *indices;    // Color indices to use for drawing
+                const uint32_t     *index;      // Color indices to use for drawing
                 color_t             dfl;        // Default color used if color array is not specified
             } color;
 
             /* Element indices */
             struct {
-                const uint32_t     *indices;    // Element indices to use for drawing instead of plain vertex data
+                const uint32_t     *index;      // Element indices to use for drawing instead of plain vertex data
             } element;
         } buffer_t;
 
