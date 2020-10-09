@@ -27,28 +27,28 @@ namespace lsp
     {
         void init_buffer(buffer_t *buf)
         {
-            buf->type       = PRIMITIVE_POINTS;
-            buf->flags      = 0;
-            buf->width      = 1.0f;
-            buf->count      = 0;
+            buf->type               = PRIMITIVE_NONE;
+            buf->flags              = 0;
+            buf->width              = 1.0f;
+            buf->count              = 0;
 
             buf->vertex.data        = NULL;
             buf->vertex.stride      = 0;
-            buf->vertex.indices     = NULL;
+            buf->vertex.index       = NULL;
 
             buf->normal.data        = NULL;
             buf->normal.stride      = 0;
-            buf->normal.indices     = NULL;
+            buf->normal.index       = NULL;
 
             buf->color.data         = NULL;
             buf->color.stride       = 0;
-            buf->color.indices      = NULL;
+            buf->color.index        = NULL;
             buf->color.dfl.r        = 0.5f;
             buf->color.dfl.r        = 0.5f;
             buf->color.dfl.r        = 0.5f;
             buf->color.dfl.a        = 0.0f;
 
-            buf->element.indices    = NULL;
+            buf->element.index      = NULL;
         }
     }
 }

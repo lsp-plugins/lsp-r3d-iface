@@ -65,6 +65,7 @@ namespace lsp
 
         enum primitive_type_t
         {
+            PRIMITIVE_NONE,
             PRIMITIVE_TRIANGLES,
             PRIMITIVE_WIREFRAME_TRIANGLES,
             PRIMITIVE_LINES,
