@@ -27,30 +27,30 @@ namespace lsp
     {
         void init_buffer(buffer_t *buf)
         {
+            buf->model.m[0]         = 1.0f;
+            buf->model.m[1]         = 0.0f;
+            buf->model.m[2]         = 0.0f;
+            buf->model.m[3]         = 0.0f;
+
+            buf->model.m[4]         = 0.0f;
+            buf->model.m[5]         = 1.0f;
+            buf->model.m[6]         = 0.0f;
+            buf->model.m[7]         = 0.0f;
+
+            buf->model.m[8]         = 0.0f;
+            buf->model.m[9]         = 0.0f;
+            buf->model.m[10]        = 1.0f;
+            buf->model.m[11]        = 0.0f;
+
+            buf->model.m[12]        = 0.0f;
+            buf->model.m[13]        = 0.0f;
+            buf->model.m[14]        = 0.0f;
+            buf->model.m[15]        = 1.0f;
+
             buf->type               = PRIMITIVE_NONE;
             buf->flags              = 0;
             buf->width              = 1.0f;
             buf->count              = 0;
-
-            buf->model[0]           = 1.0f;
-            buf->model[1]           = 0.0f;
-            buf->model[2]           = 0.0f;
-            buf->model[3]           = 0.0f;
-
-            buf->model[4]           = 0.0f;
-            buf->model[5]           = 1.0f;
-            buf->model[6]           = 0.0f;
-            buf->model[7]           = 0.0f;
-
-            buf->model[8]           = 0.0f;
-            buf->model[9]           = 0.0f;
-            buf->model[10]          = 1.0f;
-            buf->model[11]          = 0.0f;
-
-            buf->model[12]          = 0.0f;
-            buf->model[13]          = 0.0f;
-            buf->model[14]          = 0.0f;
-            buf->model[15]          = 1.0f;
 
             buf->vertex.data        = NULL;
             buf->vertex.stride      = 0;
