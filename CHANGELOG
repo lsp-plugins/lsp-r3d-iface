@@ -7,6 +7,7 @@
   enumeration capabilities.
 * Added LSP_R3D_BULTIN_FACTORY_FUNCTION macro.
 * Added Factory::enumerate(index) method to enumerate built-in factories.
+* Updated interface of r3d::buffer_t structure.
 
 === 0.5.0 ===
 * Initial release.
