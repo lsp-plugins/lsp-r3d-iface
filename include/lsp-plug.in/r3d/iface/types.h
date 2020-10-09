@@ -175,6 +175,12 @@ namespace lsp
                 uni.xsrc    = src;
                 dst         = uni.xdst;
             }
+
+        /**
+         * Init buffer with default values
+         * @param buf buffer to init
+         */
+        void    init_buffer(buffer_t *buf);
     }
 }
 
