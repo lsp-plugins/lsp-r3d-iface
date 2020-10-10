@@ -158,11 +158,6 @@ namespace lsp
                 const uint32_t     *index;      // Color indices to use for drawing
                 color_t             dfl;        // Default color used if color array is not specified
             } color;
-
-            /* Element indices */
-            struct {
-                const uint32_t     *index;      // Element indices to use for drawing instead of plain vertex data
-            } element;
         } buffer_t;
 
         /**

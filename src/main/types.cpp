@@ -67,8 +67,6 @@ namespace lsp
             buf->color.dfl.r        = 0.5f;
             buf->color.dfl.r        = 0.5f;
             buf->color.dfl.a        = 0.0f;
-
-            buf->element.index      = NULL;
         }
     }
 }
