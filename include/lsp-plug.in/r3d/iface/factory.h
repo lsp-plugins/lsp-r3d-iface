@@ -27,7 +27,7 @@
 #include <lsp-plug.in/r3d/iface/types.h>
 
 #define LSP_R3D_FACTORY_FUNCTION_NAME           "lsp_r3d_factory"
-#define LSP_R3D_FACTORY_FUNCTION_HEADER         ::lsp::r3d::factory_t *lsp_r3d_factory()
+#define LSP_R3D_FACTORY_FUNCTION_HEADER(index)  ::lsp::r3d::factory_t *lsp_r3d_factory(int index)
 
 namespace lsp
 {
@@ -57,9 +57,10 @@ namespace lsp
 
         /**
          * Factory function prototype
-         * @return pointer to the factory function
+         * @param index the enumeration factory number starting with 0
+         * @return pointer to the factory function or NULL if there are no more items in enumeration
          */
-        typedef factory_t *(* factory_function_t)();
+        typedef factory_t *(* factory_function_t)(int index);
     }
 }
 

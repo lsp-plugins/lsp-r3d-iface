@@ -65,6 +65,7 @@ namespace lsp
 
         enum primitive_type_t
         {
+            PRIMITIVE_NONE,
             PRIMITIVE_TRIANGLES,
             PRIMITIVE_WIREFRAME_TRIANGLES,
             PRIMITIVE_LINES,
@@ -130,6 +131,7 @@ namespace lsp
         typedef struct buffer_t
         {
             /* Properties */
+            mat4_t                  model;      // Model matrix
             primitive_type_t        type;       // Type of primitive
             size_t                  flags;      // Additional flags, see r3d_buffer_flags_t
             float                   width;      // Point size or line width
@@ -137,27 +139,25 @@ namespace lsp
 
             /* Vertices */
             struct {
-                const dot4_t       *data;
-                size_t              stride;
+                const dot4_t       *data;       // Vertex data
+                size_t              stride;     // Stride between two vertices
+                const uint32_t     *index;      // Vertex indices to use for drawing instead of plain vertex data
             } vertex;
 
             /* Normals  */
             struct {
-                const vec4_t       *data;
-                size_t              stride;
+                const vec4_t       *data;       // Normal data
+                size_t              stride;     // Stride between two normals
+                const uint32_t     *index;      // Vertex indices to use for drawing instead of plain vertex data
             } normal;
 
             /* Colors */
             struct {
-                const color_t      *data;
-                size_t              stride;
+                const color_t      *data;       // Color data
+                size_t              stride;     // Stride between two colors
+                const uint32_t     *index;      // Color indices to use for drawing
                 color_t             dfl;        // Default color used if color array is not specified
             } color;
-
-            /* Vertex indices (always packed) */
-            struct {
-                const uint32_t     *data;
-            } index;
         } buffer_t;
 
         /**
@@ -172,6 +172,12 @@ namespace lsp
                 uni.xsrc    = src;
                 dst         = uni.xdst;
             }
+
+        /**
+         * Init buffer with default values
+         * @param buf buffer to init
+         */
+        void    init_buffer(buffer_t *buf);
     }
 }
 
