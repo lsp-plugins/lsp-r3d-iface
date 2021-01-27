@@ -2,20 +2,20 @@
 # Copyright (C) 2020 Linux Studio Plugins Project <https://lsp-plug.in/>
 #           (C) 2020 Vladimir Sadovnikov <sadko4u@gmail.com>
 #
-# This file is part of lsp-r3d-base-lib
+# This file is part of lsp-r3d-iface
 #
-# lsp-r3d-base-lib is free software: you can redistribute it and/or modify
+# lsp-r3d-iface is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # any later version.
 #
-# lsp-r3d-base-lib is distributed in the hope that it will be useful,
+# lsp-r3d-iface is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Lesser General Public License for more details.
 #
 # You should have received a copy of the GNU Lesser General Public License
-# along with lsp-r3d-base-lib.  If not, see <https://www.gnu.org/licenses/>.
+# along with lsp-r3d-iface.  If not, see <https://www.gnu.org/licenses/>.
 #
 
 # Definitions
@@ -25,20 +25,24 @@ BINDIR                     := $(PREFIX)/bin
 INCDIR                     := $(PREFIX)/include
 BASEDIR                    := $(CURDIR)
 BUILDDIR                   := $(BASEDIR)/.build
-CONFIG                     := $(BASEDIR)/.config.mk
 MODULES                    := $(BASEDIR)/modules
+CONFIG                     := $(BASEDIR)/.config.mk
 TEST                       := 0
 DEBUG                      := 0
 PROFILE                    := 0
 TRACE                      := 0
 
+include $(BASEDIR)/make/functions.mk
 include $(BASEDIR)/make/system.mk
-include $(BASEDIR)/project.mk
 include $(BASEDIR)/make/tools.mk
 include $(BASEDIR)/dependencies.mk
+include $(BASEDIR)/project.mk
 
-DEPENDENCIES               += $(TEST_DEPENDENCIES)
+# Compute the full list of dependencies
+UNIQ_DEPENDENCIES          := $(call uniq, $(DEPENDENCIES) $(TEST_DEPENDENCIES))
+DEPENDENCIES                = $(UNIQ_DEPENDENCIES)
 
+# Determine versions
 ifeq ($(findstring -devel,$(ARTIFACT_VERSION)),-devel)
   $(foreach dep, $(DEPENDENCIES), \
     $(eval $(dep)_BRANCH=devel) \
@@ -116,23 +120,23 @@ define vardef =
 endef
 
 # Define predefined variables
-ifndef $(ARTIFACT_VARS)_NAME
-  $(ARTIFACT_VARS)_NAME      := $(ARTIFACT_NAME)
+ifndef $(ARTIFACT_ID)_NAME
+  $(ARTIFACT_ID)_NAME        := $(ARTIFACT_NAME)
 endif
-ifndef $(ARTIFACT_VARS)_DESC
-  $(ARTIFACT_VARS)_DESC      := $(ARTIFACT_DESC)
+ifndef $(ARTIFACT_ID)_DESC
+  $(ARTIFACT_ID)_DESC        := $(ARTIFACT_DESC)
 endif
-ifndef $(ARTIFACT_VARS)_VERSION 
-  $(ARTIFACT_VARS)_VERSION   := $(ARTIFACT_VERSION)
+ifndef $(ARTIFACT_ID)_VERSION 
+  $(ARTIFACT_ID)_VERSION     := $(ARTIFACT_VERSION)
 endif
-ifndef $(ARTIFACT_VARS)_PATH
-  $(ARTIFACT_VARS)_PATH      := $(BASEDIR)
+ifndef $(ARTIFACT_ID)_PATH
+  $(ARTIFACT_ID)_PATH        := $(BASEDIR)
 endif
 
-$(ARTIFACT_VARS)_TESTING    = $(TEST)
-$(ARTIFACT_VARS)_TYPE      := src
+$(ARTIFACT_ID)_TESTING      = $(TEST)
+$(ARTIFACT_ID)_TYPE        := src
 
-OVERALL_DEPS := $(DEPENDENCIES) $(ARTIFACT_VARS)
+OVERALL_DEPS := $(DEPENDENCIES) $(ARTIFACT_ID)
 __tmp := $(foreach dep,$(OVERALL_DEPS),$(call vardef, $(dep)))
 
 CONFIG_VARS = \

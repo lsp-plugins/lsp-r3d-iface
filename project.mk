@@ -19,20 +19,20 @@
 #
 
 # Package version
+ARTIFACT_ID                 = LSP_R3D_IFACE
 ARTIFACT_NAME               = lsp-r3d-iface
 ARTIFACT_DESC               = 3D rendering backend interfaces
-ARTIFACT_VARS               = LSP_R3D_IFACE
 ARTIFACT_HEADERS            = lsp-plug.in
 ARTIFACT_EXPORT_ALL         = 0
 ARTIFACT_VERSION            = 0.5.2-devel
 
 # List of dependencies
+DEPENDENCIES = \
+  LIBPTHREAD \
+  LSP_COMMON_LIB
+
 TEST_DEPENDENCIES = \
   LSP_TEST_FW
-
-DEPENDENCIES = \
-  STDLIB \
-  LSP_COMMON_LIB
 
 ALL_DEPENDENCIES = \
   $(DEPENDENCIES) \
