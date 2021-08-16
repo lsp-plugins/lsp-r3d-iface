@@ -2,6 +2,9 @@
 * RECENT CHANGES
 *******************************************************************************
 
+=== 0.5.2 ===
+* Updated build system.
+
 === 0.5.1 ===
 * Updated factory function prototype: added integer parameter for 
   enumeration capabilities.

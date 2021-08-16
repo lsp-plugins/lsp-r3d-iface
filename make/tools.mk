@@ -2,20 +2,20 @@
 # Copyright (C) 2020 Linux Studio Plugins Project <https://lsp-plug.in/>
 #           (C) 2020 Vladimir Sadovnikov <sadko4u@gmail.com>
 #
-# This file is part of lsp-r3d-base-lib
+# This file is part of lsp-r3d-iface
 #
-# lsp-r3d-base-lib is free software: you can redistribute it and/or modify
+# lsp-r3d-iface is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Lesser General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # any later version.
 #
-# lsp-r3d-base-lib is distributed in the hope that it will be useful,
+# lsp-r3d-iface is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Lesser General Public License for more details.
 #
 # You should have received a copy of the GNU Lesser General Public License
-# along with lsp-r3d-base-lib.  If not, see <https://www.gnu.org/licenses/>.
+# along with lsp-r3d-iface.  If not, see <https://www.gnu.org/licenses/>.
 #
 
 # Determine tools
@@ -43,16 +43,20 @@ INSTALL            := install
 # Patch flags and tools
 FLAG_RELRO          = -Wl,-z,relro,-z,now
 FLAG_STDLIB         = -lc
-ifeq ($(PLATFORM),Solaris)
-  FLAG_RELRO              =
-  LD                      = gld
-else ifeq ($(PLATFORM),Windows)
-  FLAG_RELRO              =
-  FLAG_STDLIB             =
-endif
+CFLAGS_EXT          = $(ARCHITECTURE_CFLAGS)
+CXXFLAGS_EXT        = $(ARCHITECTURE_CFLAGS)
+LDFLAGS_EXT         =
 
-CFLAGS_EXT          =
-CXXFLAGS_EXT        =
+ifeq ($(PLATFORM),Solaris)
+  FLAG_RELRO          =
+  LD                  = gld
+else ifeq ($(PLATFORM),Windows)
+  FLAG_RELRO          =
+  FLAG_STDLIB         =
+else ifeq ($(PLATFORM),BSD)
+  EXE_FLAGS_EXT      += -L/usr/local/lib
+  SO_FLAGS_EXT       += -L/usr/local/lib
+endif
 
 ifeq ($(DEBUG),1)
   CFLAGS_EXT         += -O0 -g3 -DLSP_DEBUG
@@ -80,33 +84,6 @@ else
     CFLAGS_EXT         += -fvisibility=hidden
     CXXFLAGS_EXT       += -fvisibility=hidden
   endif
-endif
-
-# ARMv7 architecture tuning
-ifeq ($(ARCHITECTURE),i586)
-  CXXFLAGS_EXT    += -m32
-  CFLAGS_EXT      += -m32
-else ifeq ($(ARCHITECTURE),x86_64)
-  CXXFLAGS_EXT    += -m64
-  CFLAGS_EXT      += -m64
-else ifeq ($(ARCHITECTURE),armv6a)
-  CXXFLAGS_EXT    += -march=armv6-a -marm
-  CFLAGS_EXT      += -march=armv6-a -marm
-else ifeq ($(ARCHITECTURE),armv7a)
-  CXXFLAGS_EXT    += -march=armv7-a -marm
-  CFLAGS_EXT      += -march=armv7-a -marm
-else ifeq ($(ARCHITECTURE),armv7ve)
-  CXXFLAGS_EXT    += -march=armv7ve -marm
-  CFLAGS_EXT      += -march=armv7ve -marm
-else ifeq ($(ARCHITECTURE),arm32)
-  CXXFLAGS_EXT    += -marm
-  CFLAGS_EXT      += -marm
-else ifeq ($(ARCHITECTURE),armv8a)
-  CXXFLAGS_EXT    += -march=armv7-a -marm
-  CFLAGS_EXT      += -march=armv7-a -marm
-else ifeq ($(ARCHITECTURE),aarch64)
-  CXXFLAGS_EXT    += -march=armv8-a
-  CFLAGS_EXT      += -march=armv8-a
 endif
 
 # Define flags
@@ -141,18 +118,18 @@ TOOL_VARS := \
 
 .PHONY: toolvars
 toolvars:
-	@echo "List of tool variables:"
-	@echo "  AR                        Archiver tool"
-	@echo "  AS                        Assembler tool"
-	@echo "  CC                        C compiler execution command line"
-	@echo "  CFLAGS                    C compiler build flags"
-	@echo "  CXX                       C++ compiler execution command line"
-	@echo "  CXXFLAGS                  C++ compiler build flags"
-	@echo "  EXE_FLAGS                 Flags to link executable files"
-	@echo "  GIT                       The name of the Git version control tool"
-	@echo "  INCLUDE                   Additional paths for include files"
-	@echo "  LD                        Linker execution command line"
-	@echo "  LDFLAGS                   Linker flags for merging object files"
-	@echo "  SO_FLAGS                  Flags to link shared object/library files"
-	@echo ""
+	echo "List of tool variables:"
+	echo "  AR                        Archiver tool"
+	echo "  AS                        Assembler tool"
+	echo "  CC                        C compiler execution command line"
+	echo "  CFLAGS                    C compiler build flags"
+	echo "  CXX                       C++ compiler execution command line"
+	echo "  CXXFLAGS                  C++ compiler build flags"
+	echo "  EXE_FLAGS                 Flags to link executable files"
+	echo "  GIT                       The name of the Git version control tool"
+	echo "  INCLUDE                   Additional paths for include files"
+	echo "  LD                        Linker execution command line"
+	echo "  LDFLAGS                   Linker flags for merging object files"
+	echo "  SO_FLAGS                  Flags to link shared object/library files"
+	echo ""
 
