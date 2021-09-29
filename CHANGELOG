@@ -3,6 +3,7 @@
 *******************************************************************************
 
 === 0.5.3 ===
+- Added BUFFER_STD_BLENDING flag to buffer flags.
 
 === 0.5.2 ===
 * Updated build system.

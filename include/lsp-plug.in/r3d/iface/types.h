@@ -74,9 +74,10 @@ namespace lsp
 
         enum buffer_flags_t
         {
-            BUFFER_BLENDING     = 1 << 0,
-            BUFFER_LIGHTING     = 1 << 1,
-            BUFFER_NO_CULLING   = 1 << 2
+            BUFFER_BLENDING     = 1 << 0,       // Use blending, by default use (1 - src.alhpa, src.alpha) components
+            BUFFER_LIGHTING     = 1 << 1,       // Enable lighting
+            BUFFER_NO_CULLING   = 1 << 2,       // Disable face culling
+            BUFFER_STD_BLENDING = 1 << 3,       // Use standard blending (src.alhpa, 1 - src.alpha) components
         };
 
         #pragma pack(push, 1)
