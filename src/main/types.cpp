@@ -27,6 +27,16 @@ namespace lsp
     {
         void init_buffer(buffer_t *buf)
         {
+            init_buffer(buf, NULL, NULL);
+        }
+
+        void init_buffer(buffer_t *buf, void *user)
+        {
+            init_buffer(buf, user, NULL);
+        }
+
+        void init_buffer(buffer_t *buf, void *user, free_buffer_t func)
+        {
             buf->model.m[0]         = 1.0f;
             buf->model.m[1]         = 0.0f;
             buf->model.m[2]         = 0.0f;
@@ -51,6 +61,9 @@ namespace lsp
             buf->flags              = 0;
             buf->width              = 1.0f;
             buf->count              = 0;
+
+            buf->user               = user;
+            buf->free               = func;
 
             buf->vertex.data        = NULL;
             buf->vertex.stride      = 0;

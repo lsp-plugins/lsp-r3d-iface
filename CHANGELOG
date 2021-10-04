@@ -4,6 +4,7 @@
 
 === 0.5.3 ===
 - Added BUFFER_STD_BLENDING flag to buffer flags.
+- Added user data and destruction function to r3d::buffer_t type.
 
 === 0.5.2 ===
 * Updated build system.
