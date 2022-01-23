@@ -38,4 +38,13 @@
     #define LSP_R3D_IFACE_CIMPORT           LSP_CSYMBOL_IMPORT
 #endif
 
+#define LSP_R3D_IFACE_VERSION_FUNC_NAME     "lsp_r3d_iface_version"
+
+#define LSP_R3D_IFACE_DEF_VERSION_FUNC   \
+    const ::lsp::version_t *lsp_r3d_iface_version() \
+    { \
+        static const ::lsp::version_t v=LSP_DEF_VERSION(LSP_R3D_IFACE_MAJOR, LSP_R3D_IFACE_MINOR, LSP_R3D_IFACE_MICRO); \
+        return &v; \
+    }
+
 #endif /* LSP_PLUG_IN_R3D_IFACE_VERSION_H_ */
