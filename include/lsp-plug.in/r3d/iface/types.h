@@ -74,9 +74,10 @@ namespace lsp
 
         enum buffer_flags_t
         {
-            BUFFER_BLENDING     = 1 << 0,
-            BUFFER_LIGHTING     = 1 << 1,
-            BUFFER_NO_CULLING   = 1 << 2
+            BUFFER_BLENDING     = 1 << 0,       // Use blending, by default use (1 - src.alhpa, src.alpha) components
+            BUFFER_LIGHTING     = 1 << 1,       // Enable lighting
+            BUFFER_NO_CULLING   = 1 << 2,       // Disable face culling
+            BUFFER_STD_BLENDING = 1 << 3,       // Use standard blending (src.alhpa, 1 - src.alpha) components
         };
 
         #pragma pack(push, 1)
@@ -128,7 +129,20 @@ namespace lsp
             float               cutoff;         /* Spot cutoff angle */
         } light_t;
 
-        typedef struct buffer_t
+        typedef struct buffer_t         buffer_t;
+
+        /**
+         * Buffer destruction function
+         * @param buf buffer to destroy
+         */
+        typedef void    (*free_buffer_t)(buffer_t *buf);
+
+        /**
+         * Drawing buffer submitted to backend.
+         * The backend should not modify any data stored in the buffer.
+         * Client software may change the buffer.
+         */
+        struct buffer_t
         {
             /* Properties */
             mat4_t                  model;      // Model matrix
@@ -136,29 +150,31 @@ namespace lsp
             size_t                  flags;      // Additional flags, see r3d_buffer_flags_t
             float                   width;      // Point size or line width
             size_t                  count;      // Number of elements in buffer
+            void                   *user;       // User data
+            free_buffer_t           free;       // Disposal function, not used by the rendering backend
 
             /* Vertices */
             struct {
-                const dot4_t       *data;       // Vertex data
+                dot4_t             *data;       // Vertex data
                 size_t              stride;     // Stride between two vertices
-                const uint32_t     *index;      // Vertex indices to use for drawing instead of plain vertex data
+                uint32_t           *index;      // Vertex indices to use for drawing instead of plain vertex data
             } vertex;
 
             /* Normals  */
             struct {
-                const vec4_t       *data;       // Normal data
+                vec4_t             *data;       // Normal data
                 size_t              stride;     // Stride between two normals
-                const uint32_t     *index;      // Vertex indices to use for drawing instead of plain vertex data
+                uint32_t           *index;      // Vertex indices to use for drawing instead of plain vertex data
             } normal;
 
             /* Colors */
             struct {
-                const color_t      *data;       // Color data
+                color_t            *data;       // Color data
                 size_t              stride;     // Stride between two colors
-                const uint32_t     *index;      // Color indices to use for drawing
+                uint32_t           *index;      // Color indices to use for drawing
                 color_t             dfl;        // Default color used if color array is not specified
             } color;
-        } buffer_t;
+        };
 
         /**
          * Export function definition
@@ -178,6 +194,8 @@ namespace lsp
          * @param buf buffer to init
          */
         void    init_buffer(buffer_t *buf);
+        void    init_buffer(buffer_t *buf, void *user);
+        void    init_buffer(buffer_t *buf, void *user, free_buffer_t func);
     }
 }
 
