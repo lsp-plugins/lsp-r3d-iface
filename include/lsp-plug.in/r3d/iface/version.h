@@ -22,9 +22,9 @@
 #ifndef LSP_PLUG_IN_R3D_IFACE_VERSION_H_
 #define LSP_PLUG_IN_R3D_IFACE_VERSION_H_
 
-#define LSP_R3D_IFACE_MAJOR             0
-#define LSP_R3D_IFACE_MINOR             5
-#define LSP_R3D_IFACE_MICRO             3
+#define LSP_R3D_IFACE_MAJOR             1
+#define LSP_R3D_IFACE_MINOR             0
+#define LSP_R3D_IFACE_MICRO             0
 
 #ifdef LSP_R3D_IFACE_BUILTIN
     #define LSP_R3D_IFACE__EXPORT
