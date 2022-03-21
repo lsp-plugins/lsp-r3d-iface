@@ -2,6 +2,9 @@
 * RECENT CHANGES
 *******************************************************************************
 
+=== 1.0.1 ===
+* Updated build scripts.
+
 === 1.0.0 ===
 * Added BUFFER_STD_BLENDING flag to buffer flags.
 * Added user data and destruction function to r3d::buffer_t type.
