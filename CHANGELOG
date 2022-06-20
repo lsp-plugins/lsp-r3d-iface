@@ -2,6 +2,9 @@
 * RECENT CHANGES
 *******************************************************************************
 
+=== 1.0.2 ===
+* Updated build scripts.
+
 === 1.0.1 ===
 * Updated build scripts.
 
@@ -26,3 +29,4 @@
 * Split interface code from lsp-r3d-base-lib.
 * Added possibility to define built-in R3D factory.
 * Added compatibility with window subsystem flag.
+
