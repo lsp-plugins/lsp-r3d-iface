@@ -35,3 +35,8 @@ LIBPTHREAD_VERSION         := system
 LIBPTHREAD_NAME            := libpthread
 LIBPTHREAD_TYPE            := opt
 LIBPTHREAD_LDFLAGS         := -lpthread
+
+LIBSHLWAPI_VERSION         := system
+LIBSHLWAPI_NAME            := libshlwapi
+LIBSHLWAPI_TYPE            := opt
+LIBSHLWAPI_LDFLAGS         := -lshlwapi
