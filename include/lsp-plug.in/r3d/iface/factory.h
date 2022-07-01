@@ -23,6 +23,7 @@
 #define LSP_PLUG_IN_R3D_IFACE_FACTORY_H_
 
 #include <lsp-plug.in/r3d/iface/version.h>
+
 #include <lsp-plug.in/r3d/iface/backend.h>
 #include <lsp-plug.in/r3d/iface/types.h>
 
