@@ -23,9 +23,10 @@
 #define LSP_PLUG_IN_R3D_IFACE_BACKEND_H_
 
 #include <lsp-plug.in/r3d/iface/version.h>
-#include <lsp-plug.in/r3d/iface/types.h>
+
 #include <lsp-plug.in/common/types.h>
 #include <lsp-plug.in/common/status.h>
+#include <lsp-plug.in/r3d/iface/types.h>
 
 namespace lsp
 {

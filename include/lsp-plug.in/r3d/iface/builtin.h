@@ -22,6 +22,9 @@
 #ifndef LSP_PLUG_IN_R3D_IFACE_BUILTIN_H_
 #define LSP_PLUG_IN_R3D_IFACE_BUILTIN_H_
 
+#include <lsp-plug.in/r3d/iface/version.h>
+
+#include <lsp-plug.in/common/types.h>
 #include <lsp-plug.in/r3d/iface/factory.h>
 
 namespace lsp
