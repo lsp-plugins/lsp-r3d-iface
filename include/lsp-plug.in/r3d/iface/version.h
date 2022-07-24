@@ -24,11 +24,11 @@
 
 #define LSP_R3D_IFACE_MAJOR             1
 #define LSP_R3D_IFACE_MINOR             0
-#define LSP_R3D_IFACE_MICRO             3
+#define LSP_R3D_IFACE_MICRO             4
 
 #ifdef LSP_R3D_IFACE_BUILTIN
-    #define LSP_R3D_IFACE__EXPORT
-    #define LSP_R3D_IFACE__CEXPORT
+    #define LSP_R3D_IFACE_EXPORT
+    #define LSP_R3D_IFACE_CEXPORT
     #define LSP_R3D_IFACE_IMPORT            LSP_SYMBOL_IMPORT
     #define LSP_R3D_IFACE_CIMPORT           LSP_CSYMBOL_IMPORT
 #else

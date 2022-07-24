@@ -23,5 +23,5 @@ ARTIFACT_ID                 = LSP_R3D_IFACE
 ARTIFACT_NAME               = lsp-r3d-iface
 ARTIFACT_DESC               = 3D rendering backend interfaces
 ARTIFACT_HEADERS            = lsp-plug.in
-ARTIFACT_EXPORT_ALL         = 0
-ARTIFACT_VERSION            = 1.0.3
+ARTIFACT_VERSION            = 1.0.4
+ARTIFACT_EXPORT_SYMBOLS     = 0
