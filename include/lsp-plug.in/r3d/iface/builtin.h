@@ -60,8 +60,7 @@ namespace lsp
          * Macro for simplifying definition of factory export
          */
         #define LSP_R3D_BUILTIN_FACTORY(symbol, factory)   \
-            LSP_SYMBOL_HIDDEN \
-            ::lsp::r3d::Factory symbol(factory);
+            static ::lsp::r3d::Factory symbol(factory);
 
         /**
          * The implementation of factory function that uses builtin factory
