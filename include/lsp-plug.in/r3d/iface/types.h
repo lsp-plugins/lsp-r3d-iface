@@ -194,13 +194,13 @@ namespace lsp
          * Init buffer with default values
          * @param buf buffer to init
          */
-        LSP_R3D_IFACE_EXPORT
+        LSP_R3D_IFACE_PUBLIC
         void    init_buffer(buffer_t *buf);
 
-        LSP_R3D_IFACE_EXPORT
+        LSP_R3D_IFACE_PUBLIC
         void    init_buffer(buffer_t *buf, void *user);
 
-        LSP_R3D_IFACE_EXPORT
+        LSP_R3D_IFACE_PUBLIC
         void    init_buffer(buffer_t *buf, void *user, free_buffer_t func);
     }
 }
