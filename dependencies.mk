@@ -20,7 +20,8 @@
 
 #------------------------------------------------------------------------------
 # List of common dependencies
-DEPENDENCIES =    
+DEPENDENCIES = \
+  LSP_COMMON_LIB
 
 TEST_DEPENDENCIES = \
   LSP_TEST_FW

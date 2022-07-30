@@ -34,7 +34,7 @@ namespace lsp
         /**
          * This class allows to automatically register built-in factory
          */
-        class LSP_SYMBOL_HIDDEN Factory
+        class LSP_HIDDEN_MODIFIER Factory
         {
             private:
                 Factory & operator = (const Factory &);
