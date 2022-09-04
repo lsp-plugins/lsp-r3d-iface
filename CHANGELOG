@@ -3,6 +3,7 @@
 *******************************************************************************
 
 === 1.0.5 ===
+* Simplified interface related to reading pixel data of the off-screen buffer.
 * Updated build scripts.
 
 === 1.0.4 ===
