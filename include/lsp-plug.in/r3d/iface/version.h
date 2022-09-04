@@ -24,18 +24,14 @@
 
 #define LSP_R3D_IFACE_MAJOR             1
 #define LSP_R3D_IFACE_MINOR             0
-#define LSP_R3D_IFACE_MICRO             4
+#define LSP_R3D_IFACE_MICRO             5
 
-#ifdef LSP_R3D_IFACE_BUILTIN
-    #define LSP_R3D_IFACE_EXPORT
-    #define LSP_R3D_IFACE_CEXPORT
-    #define LSP_R3D_IFACE_IMPORT            LSP_SYMBOL_IMPORT
-    #define LSP_R3D_IFACE_CIMPORT           LSP_CSYMBOL_IMPORT
+#if defined(LSP_R3D_IFACE_PUBLISHER)
+    #define LSP_R3D_IFACE_PUBLIC        LSP_EXPORT_MODIFIER
+#elif defined(LSP_R3D_IFACE_BUILTIN) || defined(LSP_IDE_DEBUG)
+    #define LSP_R3D_IFACE_PUBLIC
 #else
-    #define LSP_R3D_IFACE_EXPORT            LSP_SYMBOL_EXPORT
-    #define LSP_R3D_IFACE_CEXPORT           LSP_CSYMBOL_EXPORT
-    #define LSP_R3D_IFACE_IMPORT            LSP_SYMBOL_IMPORT
-    #define LSP_R3D_IFACE_CIMPORT           LSP_CSYMBOL_IMPORT
+    #define LSP_R3D_IFACE_PUBLIC        LSP_IMPORT_MODIFIER
 #endif
 
 #define LSP_R3D_IFACE_VERSION_FUNC_NAME     "lsp_r3d_iface_version"

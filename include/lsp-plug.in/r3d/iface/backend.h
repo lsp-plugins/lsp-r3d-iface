@@ -150,12 +150,11 @@ namespace lsp
 
             /**
              * Read pixel data, should be in drawing state
-             * @param buf target buffer
-             * @param stride stride between two rows
+             * @param buf target buffer of the necessary size of width * height * bytes per pixel
              * @param format pixel format
              * @return status of operation
              */
-            status_t    (* read_pixels)(backend_t *_this, void *buf, size_t stride, pixel_format_t format);
+            status_t    (* read_pixels)(backend_t *_this, void *buf, pixel_format_t format);
         } backend_t;
     }
 }

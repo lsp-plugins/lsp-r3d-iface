@@ -25,19 +25,19 @@ namespace lsp
 {
     namespace r3d
     {
-        LSP_R3D_IFACE_EXPORT
+        LSP_R3D_IFACE_PUBLIC
         void init_buffer(buffer_t *buf)
         {
             init_buffer(buf, NULL, NULL);
         }
 
-        LSP_R3D_IFACE_EXPORT
+        LSP_R3D_IFACE_PUBLIC
         void init_buffer(buffer_t *buf, void *user)
         {
             init_buffer(buf, user, NULL);
         }
 
-        LSP_R3D_IFACE_EXPORT
+        LSP_R3D_IFACE_PUBLIC
         void init_buffer(buffer_t *buf, void *user, free_buffer_t func)
         {
             buf->model.m[0]         = 1.0f;
