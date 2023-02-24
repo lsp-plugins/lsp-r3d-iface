@@ -3,7 +3,7 @@
 *******************************************************************************
 
 === 1.0.9 ===
-
+* Added test build for Windows using MSYS2.
 
 === 1.0.8 ===
 * Added Clang build for the CI.
