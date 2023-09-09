@@ -37,9 +37,6 @@ namespace lsp
         class LSP_HIDDEN_MODIFIER Factory
         {
             private:
-                Factory & operator = (const Factory &);
-
-            private:
                 static Factory *pList;
 
                 factory_t      *pFactory;
@@ -47,7 +44,12 @@ namespace lsp
 
             public:
                 explicit Factory(factory_t *factory);
+                Factory(const Factory &) = delete;
+                Factory(Factory &&) = delete;
                 ~Factory();
+
+                Factory & operator = (const Factory &) = delete;
+                Factory & operator = (Factory &&) = delete;
 
             public:
                 static inline Factory      *list() { return pList;  }
