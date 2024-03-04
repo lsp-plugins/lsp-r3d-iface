@@ -24,7 +24,7 @@
 
 #define LSP_R3D_IFACE_MAJOR             1
 #define LSP_R3D_IFACE_MINOR             0
-#define LSP_R3D_IFACE_MICRO             16
+#define LSP_R3D_IFACE_MICRO             17
 
 #if defined(LSP_R3D_IFACE_PUBLISHER)
     #define LSP_R3D_IFACE_PUBLIC        LSP_EXPORT_MODIFIER
