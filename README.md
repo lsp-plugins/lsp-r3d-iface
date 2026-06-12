@@ -6,6 +6,16 @@ Provides all necessary data structures and type definitions:
 * ```struct factory_t``` for managing the backend metadata and it's creation.
 * ```struct backend_t``` for rendering 
 
+## Supported platforms
+
+The build and correct unit test execution has been confirmed for following platforms:
+* FreeBSD
+* GNU/Linux
+* Haiku
+* MacOS (ARM-based)
+* Windows 32-bit
+* Windows 64-bit
+
 Requirements
 ======
 
